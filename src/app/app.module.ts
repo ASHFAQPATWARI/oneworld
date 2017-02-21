@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { HomepagePage } from '../pages/homepage/homepage';
 import { OrdersPage } from '../pages/orders/orders';
 import { OrderonmapPage } from '../pages/orderonmap/orderonmap';
+import { OrderDetailPage } from '../pages/order-detail/order-detail';
 import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 
@@ -14,7 +15,8 @@ import { RegisterPage } from '../pages/register/register';
     OrdersPage,
     OrderonmapPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    OrderDetailPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -26,7 +28,8 @@ import { RegisterPage } from '../pages/register/register';
     OrdersPage,
     OrderonmapPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    OrderDetailPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })

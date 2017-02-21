@@ -33,7 +33,7 @@ export class LoginPage {
     setTimeout(() => {
       this.loading.dismiss();
       this.navCtrl.setRoot(HomepagePage);
-    }, 3000);
+    }, 1000);
   }
 
   createAccount() {

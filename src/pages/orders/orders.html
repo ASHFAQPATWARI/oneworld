@@ -13,6 +13,67 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h1>Asjhfaq</h1>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Orders Summary
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        Pending
+        <ion-badge color="danger" item-right>260k</ion-badge>
+      </ion-item>
+      <ion-item>
+        Delivered
+        <ion-badge color="secondary" item-right>260k</ion-badge>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-list-header color="danger">
+      Pending
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let order of ordersList">
+      <ion-item (click)='showOrderDetails(order)'>
+        <p>{{order.customerName}} ({{order.mobNo}})</p>
+        <p>Invoice No: {{order.invoiceNo}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="secondary">
+            Delivered
+          </button>
+        <button ion-button color="primary">
+            <ion-icon name="locate" item-left></ion-icon>
+          </button>
+        <button ion-button color="danger">
+            Reject
+          </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header color="secondary">
+      Delivered
+    </ion-list-header>
+    <ion-item-sliding *ngFor="let order of ordersList">
+      <ion-item>
+        <p>{{order.customerName}} ({{order.mobNo}})</p>
+        <p>Invoice No: {{order.invoiceNo}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <!--<button ion-button color="secondary">
+            Delivered
+          </button>-->
+        <button ion-button color="primary">
+            <ion-icon name="locate" item-left></ion-icon>
+          </button>
+        <button ion-button color="danger">
+            Delete
+          </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
 </ion-content>
