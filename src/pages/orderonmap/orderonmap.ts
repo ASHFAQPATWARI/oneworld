@@ -1,22 +1,41 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { NavController, NavParams, Loading, LoadingController } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
 
-/*
-  Generated class for the Orderonmap page.
+declare var google;
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-orderonmap',
   templateUrl: 'orderonmap.html'
 })
 export class OrderonmapPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+  loading: Loading;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController) { }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad OrderonmapPage');
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
+    Geolocation.getCurrentPosition().then((resp) => {
+      this.loading.dismiss();
+      this.loadMap(resp.coords.latitude, resp.coords.longitude);
+    }).catch((error) => {
+      //this.loading.dismiss();
+    });
   }
+
+  loadMap(lat, lang) {
+    let latLng = new google.maps.LatLng(lat, lang);
+
+    let mapOptions = {
+      center: latLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+  }
+
 
 }

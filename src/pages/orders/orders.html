@@ -14,21 +14,19 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      Orders Summary
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        Pending
+
+  <ion-row margin-vertical>
+    <ion-col text-center>
+      <p>Pending
         <ion-badge color="danger" item-right>260k</ion-badge>
-      </ion-item>
-      <ion-item>
-        Delivered
+      </p>
+    </ion-col>
+    <ion-col text-center>
+      <p>Delivered
         <ion-badge color="secondary" item-right>260k</ion-badge>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+      </p>
+    </ion-col>
+  </ion-row>
 
   <ion-list>
     <ion-list-header color="danger">
@@ -43,7 +41,7 @@
         <button ion-button color="secondary">
             Delivered
           </button>
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)='getCoordinates(order)'>
             <ion-icon name="locate" item-left></ion-icon>
           </button>
         <button ion-button color="danger">
@@ -63,10 +61,7 @@
         <p>Invoice No: {{order.invoiceNo}}</p>
       </ion-item>
       <ion-item-options side="right">
-        <!--<button ion-button color="secondary">
-            Delivered
-          </button>-->
-        <button ion-button color="primary">
+        <button ion-button color="primary" (click)='getCoordinates(order)'>
             <ion-icon name="locate" item-left></ion-icon>
           </button>
         <button ion-button color="danger">

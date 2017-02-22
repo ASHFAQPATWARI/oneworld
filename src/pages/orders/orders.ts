@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, LoadingController, Loading } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
 
 import { OrderDetailPage } from '../order-detail/order-detail';
 
@@ -14,7 +15,7 @@ import { OrderDetailPage } from '../order-detail/order-detail';
   templateUrl: 'orders.html'
 })
 export class OrdersPage {
-
+  loading: Loading;
   ordersList = [
     {
       customerName: 'Ashfaq',
@@ -43,10 +44,25 @@ export class OrdersPage {
     }
   ]
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrdersPage');
+  }
+
+  getCoordinates(order) {
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
+    Geolocation.getCurrentPosition().then((resp) => {
+      this.loading.dismiss();
+      alert('coordinates: lat= ' + resp.coords.latitude + '  long= ' + resp.coords.longitude);
+      // resp.coords.latitude
+      // resp.coords.longitude
+    }).catch((error) => {
+      this.loading.dismiss();
+      alert('Error getting location' + error.message);
+    });
   }
 
   showOrderDetails(order) {
