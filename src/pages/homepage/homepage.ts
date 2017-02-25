@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { OrderonmapPage } from '../orderonmap/orderonmap';
 import { OrdersPage } from '../orders/orders';
+import { DeliveredOrdersPage } from '../delivered-orders/delivered-orders';
 
 /*
   Generated class for the Homepage page.
@@ -18,6 +19,7 @@ export class HomepagePage {
 
   orderOnMapTab: any = OrderonmapPage;
   ordersTab: any = OrdersPage;
+  deliveredOrders: any = DeliveredOrdersPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
