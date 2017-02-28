@@ -14,7 +14,7 @@
       Delivered
     </ion-list-header>-->
     <ion-item-sliding *ngFor="let order of ordersList">
-      <ion-item>
+      <ion-item (click)='showOrderDetails(order)'>
         <p>{{order.customerName}} ({{order.mobNo}})</p>
         <p>Invoice No: {{order.invoiceNo}}</p>
       </ion-item>

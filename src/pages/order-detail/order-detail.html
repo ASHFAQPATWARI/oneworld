@@ -25,10 +25,44 @@
       Invoice No: {{order.invoiceNo}}
     </ion-card-header>
     <ion-card-content>
-      <p><label>Customer Name: </label>{{order.customerName}}</p>
-      <p><label>Mobile No: </label>{{order.mobNo}}</p>
-      <p><label>Bill Amount: </label>KD 2.500</p>
-      <p><label>Bill Amount: </label>KD 2.500</p>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-20>10</ion-col>
+          <ion-col width-60>Chicken Sandwich with extra cheese lettuce and French Fries</ion-col>
+          <ion-col width-20>KD 109</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-20>10</ion-col>
+          <ion-col width-60>Chicken Sandwich</ion-col>
+          <ion-col width-20>KD 109</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-20>1</ion-col>
+          <ion-col width-60>Chicken Burger</ion-col>
+          <ion-col width-20>KD 10</ion-col>
+        </ion-row>
+        <hr>
+        <ion-row>
+          <ion-col width-40>Total:</ion-col>
+          <ion-col width-60 text-right>KD 209</ion-col>
+        </ion-row>
+
+      </ion-grid>
+
     </ion-card-content>
   </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Address Details
+    </ion-card-header>
+    <ion-card-content>
+      <p><label>Customer Name: </label>{{order.customerName}}</p>
+      <p><label>Mobile No: </label>{{order.mobNo}}</p>
+      <p><label>Area: </label>Salmiya</p>
+      <p><label>Block: </label>3</p>
+      <p><label>Street: </label>Issa Al Qatami</p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

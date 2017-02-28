@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController, LoadingController, Loading } from 'ionic-angular';
+
+import { OrderDetailPage } from '../order-detail/order-detail';
 
 /*
   Generated class for the DeliveredOrders page.
@@ -39,10 +41,17 @@ export class DeliveredOrdersPage {
       invoiceNo: 34575685
     }
   ];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  loading: Loading;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DeliveredOrdersPage');
+  }
+
+  showOrderDetails(order) {
+    let modal = this.modalCtrl.create(OrderDetailPage, { order: order });
+    modal.present();
   }
 
 }
