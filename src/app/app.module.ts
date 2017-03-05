@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { AppsettingsPage } from '../pages/appsettings/appsettings';
 import { HomepagePage } from '../pages/homepage/homepage';
 import { OrdersPage } from '../pages/orders/orders';
 import { OrderonmapPage } from '../pages/orderonmap/orderonmap';
@@ -18,7 +19,8 @@ import { DeliveredOrdersPage } from '../pages/delivered-orders/delivered-orders'
     LoginPage,
     RegisterPage,
     OrderDetailPage,
-    DeliveredOrdersPage
+    DeliveredOrdersPage,
+    AppsettingsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -32,7 +34,8 @@ import { DeliveredOrdersPage } from '../pages/delivered-orders/delivered-orders'
     LoginPage,
     RegisterPage,
     OrderDetailPage,
-    DeliveredOrdersPage
+    DeliveredOrdersPage,
+    AppsettingsPage
   ],
   providers: [{ provide: ErrorHandler, useClass: IonicErrorHandler }]
 })

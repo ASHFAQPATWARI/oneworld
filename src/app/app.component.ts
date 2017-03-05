@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ModalController, LoadingController, Loading } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { AlertController } from 'ionic-angular';
 
 import { HomepagePage } from '../pages/homepage/homepage';
+import { AppsettingsPage } from '../pages/appsettings/appsettings';
 import { LoginPage } from '../pages/login/login';
 
 @Component({
@@ -14,8 +16,10 @@ export class MyApp {
   rootPage: any = LoginPage;
 
   pages: Array<{ title: string, component: any }>;
+  loading: Loading;
 
-  constructor(public platform: Platform) {
+  constructor(public platform: Platform, public alertCtrl: AlertController, public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -40,4 +44,44 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  openAdminAlert() {
+    let prompt = this.alertCtrl.create({
+      title: 'Admin Credentials',
+      message: "Enter Admin Credentials to change Settings.",
+      inputs: [
+        {
+          name: 'Admin_credentials',
+          placeholder: 'Admin Credentials'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Ok',
+          handler: data => {
+            this.loading = this.loadingCtrl.create();
+            this.loading.present();
+            setTimeout(() => {
+              this.loading.dismiss();
+              this.openSettings();
+            }, 1000);
+          }
+        }
+      ]
+    });
+    prompt.present();
+
+  }
+
+  openSettings() {
+    let modal = this.modalCtrl.create(AppsettingsPage);
+    modal.present();
+  }
+
 }
